@@ -10,7 +10,8 @@ void test_1();
 
 int main() {
 	//prims_test();
-	kruskal_test();
+	//kruskal_test();
+	test_1();
 }
 
 
