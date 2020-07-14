@@ -15,6 +15,28 @@ int main() {
 }
 
 
+void prims_test() {
+	graph temp( 3 );
+	temp.set_edge_value( 0, 1, 1 );
+	temp.set_edge_value( 0, 2, 6 );
+	temp.set_edge_value( 1, 2, 5 );
+	tree t( temp );
+	t.create_prims_mst();
+	cout << t;
+}
+
+void kruskal_test() {
+	graph temp( 3 );
+	temp.set_edge_value( 0, 1, 1 );
+	temp.set_edge_value( 0, 2, 6 );
+	temp.set_edge_value( 1, 2, 5 );
+	tree t( temp );
+	t.create_kruskal_tree();
+	cout << t;
+}
+
+
+
 void test_1() {
 	graph temp( 20 );
 	temp.set_edge_value( 0, 1, 17 );
@@ -364,24 +386,4 @@ void test_1() {
 	tree t( temp );
 	t.create_kruskal_tree();
 	std::cout << t;
-}
-
-void prims_test() {
-	graph temp( 3 );
-	temp.set_edge_value( 0, 1, 1 );
-	temp.set_edge_value( 0, 2, 6 );
-	temp.set_edge_value( 1, 2, 5 );
-	tree t( temp );
-	t.create_prims_mst();
-	cout << t;
-}
-
-void kruskal_test() {
-	graph temp( 3 );
-	temp.set_edge_value( 0, 1, 1 );
-	temp.set_edge_value( 0, 2, 6 );
-	temp.set_edge_value( 1, 2, 5 );
-	tree t( temp );
-	t.create_kruskal_tree();
-	cout << t;
 }
