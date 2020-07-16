@@ -61,12 +61,13 @@ std::ostream& operator<<( std::ostream& os, tree& T ) {
 	return os;
 }
 
+
 //prim's algorithm
 void tree::create_prims_mst() {
 	Priority_Queue<std::pair<int, int >> Q;
 	total = 0;
 	MST.clear();
-	std::vector<std::pair<int, int>> contents;
+	std::vector<int> contents;
 	for (int i = 0; i < G.vertice_num()-1; ++i) {
 		auto temp = neighbors( G, i );
 		for (auto s : temp) {
@@ -76,17 +77,18 @@ void tree::create_prims_mst() {
 		while (Q.size()!=0) {
 			auto top = Q.top();
 			Q.pop();
-			bool condition{ 0 };
-			for (auto a : contents) {
-				if (!condition)
-					condition = ((a.first == top.key.first && a.second == top.key.second) || (a.second == top.key.first && a.first == top.key.second));
-				else
-					break;
+			bool cond_1{ false }, cond_2{ false };
+			for (int a : contents) {
+				if (a == top.key.first)
+					cond_1 = true;
+				if (a == top.key.second)
+					cond_2 = true;
 			}
-			if (!condition) {
+			if (!(cond_1 && cond_2)) {
 				branches B{ top.key.first,top.key.second,top.priority };
 				MST.push_back( B );
-				contents.emplace_back( top.key.first, top.key.second );
+				contents.push_back( top.key.first );
+				contents.push_back( top.key.second );
 				total += top.priority;
 				break;
 			}
