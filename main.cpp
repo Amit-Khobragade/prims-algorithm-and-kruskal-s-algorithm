@@ -12,6 +12,7 @@ int main() {
 	//prims_test();
 	//kruskal_test();
 	test_1();
+	return 0;
 }
 
 
